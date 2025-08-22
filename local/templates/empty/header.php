@@ -6,6 +6,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
 use Bitrix\Main\Page\Asset;
 
+// Переменная, которая содержит значение корня сайта
 $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
 
 ?>
@@ -21,15 +22,21 @@ $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Вывод заголовка браузера  -->
     <title><?php
         $APPLICATION->ShowTitle(); ?></title>
+
+    <!-- Вывод метатегов  -->
     <?php
     $APPLICATION->ShowHead(); ?>
 
+    <!-- Подключение CSS и иконки-->
     <?php
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/common-styles.css"); ?>
     <link rel="icon" href="<?= SITE_TEMPLATE_PATH ?>/ico/favicon_bx.png">
 
+    <!-- Здесь подключаем скрипты через GetAdditionalFileURL, так как идёт проверка на версию браузера -->
     <!--[if lt IE 9]>
     <script src="<?php
     CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . "/js/vendor/modernizr-html5shiv-respond.min.js") ?>"></script>
@@ -39,6 +46,16 @@ $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
     <script src="<?php
     CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . "/js/vendor/modernizr.min.js") ?>"></script>
     <!--<![endif]-->
+
+    <?php
+    // Подключение скриптов
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.min.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/bootstrap/collapse.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/bootstrap/tooltip.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/plugins.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.touchSwipe.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.ba-throttle-debounce.min.js");
+    ?>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -48,6 +65,7 @@ $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
     Frame</a> чтобы улучшить взаимодействие с сайтом.</p>
 <![endif]-->
 
+<!-- Вывод административной панели -->
 <?php
 $APPLICATION->ShowPanel(); ?>
 
@@ -60,21 +78,21 @@ $APPLICATION->ShowPanel(); ?>
                         <?php
                         if ($bIsMainPage): ?>
                         <span class="logo">
-                            <?php
-                            else: ?>
-                                <a class="logo" href="/">
-                                <?php
-                                endif; ?>
-                                    <div class="image">Intervolga.ru</div>
-                                    <div id="slogan-rand" class="slogan">
-                                        <noscript>Сайты и реклама в интернете</noscript>
-                                    </div>
-                                <?php
-                                if ($bIsMainPage): ?>
-                                </span>
+						<?php
+                        else: ?>
+						<a class="logo" href="/">
+						<?php
+                        endif; ?>
+							<div class="image">Одежда</div>
+							<div id="slogan-rand" class="slogan">
+								<noscript>Лучшая одежда</noscript>
+							</div>
+						<?php
+                        if ($bIsMainPage): ?>
+						</span>
                     <?php
                     else: ?>
-                        </а>
+                        </a>
                     <?php
                     endif; ?>
                     </div>
@@ -86,9 +104,7 @@ $APPLICATION->ShowPanel(); ?>
                                     $APPLICATION->IncludeFile(
                                         SITE_DIR . "include/slogan.php",
                                         array(),
-                                        array(
-                                            "MODE" => "text"
-                                        )
+                                        array("MODE" => "text")
                                     ); ?>
                                 </ul>
                             </div>
@@ -102,55 +118,47 @@ $APPLICATION->ShowPanel(); ?>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <ul class="phone-list">
-                            <li>
-                                <?php
+                            <li><?php
                                 $APPLICATION->IncludeFile(
                                     SITE_DIR . "include/phone1.php",
                                     array(),
                                     array("MODE" => "html")
-                                ); ?>
-                            </li>
-                            <li>
-                                <?php
+                                ); ?></li>
+                            <li><?php
                                 $APPLICATION->IncludeFile(
                                     SITE_DIR . "include/phone2.php",
                                     array(),
                                     array("MODE" => "html")
-                                ); ?>
-                            </li>
+                                ); ?></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <nav>
-        <div class="navbar navbar-intervolga">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav">
-                        <span class="sr-only">Переключить навигацию</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">InterVolga.ru</a>
-                </div>
-                <div class="collapse navbar-collapse" id="top-nav">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/">Главная страница</a></li>
-                        <li><a href="#">Каталог товаров</a></li>
-                        <li><a href="#">Новости компании</a></li>
-                        <li><a href="#">Гарантия</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Дилерам</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
 
+    <!-- Подключение компонента меню -->
+    <?php
+    $APPLICATION->IncludeComponent(
+        "bitrix:menu",
+        "menu",
+        array(
+            "ALLOW_MULTI_SELECT" => "N",    // Разрешить несколько активных пунктов одновременно
+            "CHILD_MENU_TYPE" => "left",    // Тип меню для остальных уровней
+            "DELAY" => "N",    // Откладывать выполнение шаблона меню
+            "MAX_LEVEL" => "1",    // Уровень вложенности меню
+            "MENU_CACHE_GET_VARS" => "",    // Значимые переменные запроса
+            "MENU_CACHE_TIME" => "3600",    // Время кеширования (сек.)
+            "MENU_CACHE_TYPE" => "N",    // Тип кеширования
+            "MENU_CACHE_USE_GROUPS" => "Y",    // Учитывать права доступа
+            "ROOT_MENU_TYPE" => "top",    // Тип меню для первого уровня
+            "USE_EXT" => "N",    // Подключать файлы с именами вида .тип_меню.menu_ext.php
+            "COMPONENT_TEMPLATE" => ".default"
+        ),
+        false
+    ); ?>
+
+    <!-- Если находимся на главной странице, то часть её контента будет отображаться в шапке сайта -->
     <?php
     if ($bIsMainPage): ?>
         <div class="slider-responsive">
@@ -347,15 +355,29 @@ $APPLICATION->ShowPanel(); ?>
     endif; ?>
 
     <div class="container">
+
+        <!-- Хлебные крошки отображаются на всех страницах, кроме главной -->
         <?php
         if (!$bIsMainPage): ?>
-            <ol class="breadcrumb">
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Раздел</a></li>
-                <li class="active">Детальная страница</li>
-            </ol>
+            <!-- Подключение компонента навигационной цепочки -->
+            <?php
+            $APPLICATION->IncludeComponent(
+                "bitrix:breadcrumb",
+                "breadcrumb",
+                array(
+                    "PATH" => "",
+                    // Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+                    "SITE_ID" => "s1",
+                    // Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+                    "START_FROM" => "0",
+                    // Номер пункта, начиная с которого будет построена навигационная цепочка
+                ),
+                false
+            ); ?>
         <?php
         endif; ?>
+
+        <!-- Выводим заголовок у страниц (false стоит, так как у нас нет свойства для заголовка или его значение пустое)  -->
         <h1><?php
             $APPLICATION->ShowTitle(false); ?></h1>
     </div>

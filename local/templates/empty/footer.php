@@ -16,6 +16,8 @@ use Bitrix\Main\Page\Asset;
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
+
+                    <!-- Добавление включаемой области  -->
                     <address>
                         <?php
                         $APPLICATION->IncludeFile(
@@ -34,6 +36,8 @@ use Bitrix\Main\Page\Asset;
                 </div>
 
                 <div class="col-md-4 col-md-pull-4 hidden-print">
+
+                    <!-- Добавление включаемой области  -->
                     <?php
                     $APPLICATION->IncludeFile(
                         SITE_DIR . "include/social-links.php",
@@ -47,16 +51,11 @@ use Bitrix\Main\Page\Asset;
 </footer>
 
 <?php
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.min.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/bootstrap/collapse.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/bootstrap/tooltip.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.touchSwipe.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/plugins.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.ba-throttle-debounce.min.js");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
+// Подключение скриптов
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/cookesHelp.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/bootstrap-switch.min.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/jquery.carouFredSel-packed.js");
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
 ?>
 
 </body>
