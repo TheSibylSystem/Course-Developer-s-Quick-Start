@@ -8,7 +8,14 @@ use Bitrix\Main\Page\Asset;
 
 ?>
 
-<div class="sticky-push"></div>
+<?php
+if ("ERROR_404" == 'Y'): ?>
+    </div>
+<?php
+else: ?>
+    <div class="sticky-push"></div>
+<?php
+endif; ?>
 </div>
 
 <footer>
