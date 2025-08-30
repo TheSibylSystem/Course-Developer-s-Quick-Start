@@ -161,79 +161,76 @@ $APPLICATION->ShowPanel(); ?>
     <!-- Если находимся на главной странице, то часть её контента будет отображаться в шапке сайта -->
     <?php
     if ($bIsMainPage): ?>
-        <div class="slider-responsive">
-            <div class="slider-responsive-panel">
-                <input data-toggle="radio-switch" type="checkbox">
-                <span>Наши лучшие предложения Вам</span>
-            </div>
-            <div class="toggle-height">
-                <div class="slider-responsive-controls">
-                    <a class="hidden-xs" href="#prev"></a>
-                    <a class="hidden-xs" href="#next"></a>
-                </div>
-                <div class="slider-responsive-inner">
 
-
-                    <div class="slider-responsive-inner-item active">
-                        <div class="slider-responsive-inner-item-img"
-                             style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/img/slider-main/1.jpg')">
-                            <div class="slider-responsive-inner-item-img-title">
-                                <div class="h2">Одежда для велосипедистов</div>
-                                <div>В следующем году наша компания начинает коллекции одежды для велосипедистов. Не
-                                    пропустите!
-                                </div>
-                                <a href="#" class="link">Подробнее...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-responsive-inner-item">
-                        <div class="slider-responsive-inner-item-img"
-                             style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/img/slider-main/2.jpg')">
-                            <div class="slider-responsive-inner-item-img-title">
-                                <div class="h2">Одежда для бега</div>
-                                <div>Новая коллекция спортивной одежды для бега</div>
-                                <a href="#" class="link">Подробнее...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-responsive-inner-item">
-                        <div class="slider-responsive-inner-item-img"
-                             style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/img/slider-main/3.jpg')">
-                            <div class="slider-responsive-inner-item-img-title">
-                                <div class="h2">Ценопад! Успейте купить на этой неделе!</div>
-                                <div>Наступила осень. Желтеют и опадают листья, навевая уныние и тоску о закончившемся
-                                    лете. Раскрасьте хмурые будни, спешите на осеннюю акцию Ценопад! Лучшие цены осени,
-                                    только качественные товары!
-                                </div>
-                                <a href="#" class="link">Подробнее...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-responsive-inner-item">
-                        <div class="slider-responsive-inner-item-img"
-                             style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/img/slider-main/4.jpg')">
-                            <div class="slider-responsive-inner-item-img-title">
-                                <div class="h2">Новая коллекция нижнего белья</div>
-                                <div>Девочки, спешите! Новое поступление красивейшего нижнего белья. Первым 100 оптовым
-                                    покупателям - скидка 10%! Отличное качество, известные бренды. В наличии весь
-                                    размерный ряд.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-responsive-inner-item">
-                        <div class="slider-responsive-inner-item-img"
-                             style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/img/slider-main/5.jpg')">
-                            <div class="slider-responsive-inner-item-img-title">
-                                <div class="h2">Гимнастические купальники</div>
-                                <div>Все для занятия гимнастикой в нашем ассортименте</div>
-                                <a href="#" class="link">Подробнее...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Вызов системного компонента списка новостей с шаблоном index для реализации слайдера на главной странице -->
+        <?php
+        $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "index",
+            array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y", // Формат отображения даты (день.месяц.год)
+                "ADD_SECTIONS_CHAIN" => "N",     // Добавлять раздел в цепочку навигации (хлебные крошки)
+                "AJAX_MODE" => "N",              // Включить режим AJAX
+                "AJAX_OPTION_ADDITIONAL" => "",  // Дополнительный идентификатор AJAX
+                "AJAX_OPTION_HISTORY" => "N",    // Управлять историей браузера в AJAX
+                "AJAX_OPTION_JUMP" => "N",       // Прокручивать страницу к компоненту после AJAX
+                "AJAX_OPTION_STYLE" => "Y",      // Подгружать CSS стили в AJAX
+                "CACHE_FILTER" => "N",           // Кешировать результаты при фильтрации
+                "CACHE_GROUPS" => "Y",           // Учитывать права доступа пользователей при кешировании
+                "CACHE_TIME" => "36000000",      // Время кеширования (в секундах)
+                "CACHE_TYPE" => "A",             // Тип кеша
+                "CHECK_DATES" => "N",            // Показывать только активные элементы по дате
+                "COMPONENT_TEMPLATE" => ".default", // Название шаблона компонента
+                "DETAIL_URL" => "",              // Ссылка на детальную страницу
+                "DISPLAY_BOTTOM_PAGER" => "N",   // Отображать постраничную навигацию снизу
+                "DISPLAY_DATE" => "N",           // Показывать дату элемента
+                "DISPLAY_NAME" => "Y",           // Показывать название элемента
+                "DISPLAY_PICTURE" => "Y",        // Показывать изображение элемента
+                "DISPLAY_PREVIEW_TEXT" => "Y",   // Показывать текст анонса
+                "DISPLAY_TOP_PAGER" => "N",      // Отображать постраничную навигацию сверху
+                "FIELD_CODE" => array(           // Поля инфоблока, которые выбираются
+                    0 => "NAME",                 // название
+                    1 => "PREVIEW_TEXT",         // текст анонса
+                    2 => "PREVIEW_PICTURE",      // картинка анонса
+                    3 => "",
+                ),
+                "FILTER_NAME" => "",             // Имя переменной фильтра
+                "HIDE_LINK_WHEN_NO_DETAIL" => "N", // Убирать ссылку, если нет детальной страницы
+                "IBLOCK_ID" => "1",              // ID инфоблока для выборки
+                "IBLOCK_TYPE" => "index",        // Тип инфоблока
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N", // Добавлять инфоблок в цепочку навигации
+                "INCLUDE_SUBSECTIONS" => "N",    // Показывать элементы из подразделов
+                "MESSAGE_404" => "",             // Сообщение для 404 ошибки (не задано)
+                "NEWS_COUNT" => "50",            // Количество элементов на странице
+                "PAGER_BASE_LINK_ENABLE" => "N", // Использовать базовую ссылку для навигации
+                "PAGER_DESC_NUMBERING" => "N",   // Обратная нумерация страниц
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000", // Время кеша для обратной навигации
+                "PAGER_SHOW_ALL" => "N",         // Показывать ссылку "Все"
+                "PAGER_SHOW_ALWAYS" => "N",      // Всегда показывать постраничную навигацию
+                "PAGER_TEMPLATE" => ".default",  // Шаблон постраничной навигации
+                "PAGER_TITLE" => "Новости",      // Заголовок постраничной навигации
+                "PARENT_SECTION" => "",          // ID раздела для выборки
+                "PARENT_SECTION_CODE" => "",     // Символьный код раздела
+                "PREVIEW_TRUNCATE_LEN" => "",    // Ограничение длины текста анонса
+                "PROPERTY_CODE" => array(        // Свойства инфоблока, которые выбираются
+                    0 => "url",                  // свойство "url"
+                    1 => "",
+                ),
+                "SET_BROWSER_TITLE" => "N",      // Устанавливать заголовок браузера
+                "SET_LAST_MODIFIED" => "N",      // Устанавливать дату последнего изменения заголовка страницы
+                "SET_META_DESCRIPTION" => "N",   // Устанавливать meta-описание страницы
+                "SET_META_KEYWORDS" => "N",      // Устанавливать meta-ключевые слова страницы
+                "SET_STATUS_404" => "N",         // Устанавливать статус 404, если элементов нет
+                "SET_TITLE" => "N",              // Устанавливать заголовок страницы
+                "SHOW_404" => "N",               // Показывать страницу 404, если нет элементов
+                "SORT_BY1" => "SORT",            // Поле первой сортировки
+                "SORT_BY2" => "TIMESTAMP_X",     // Поле второй сортировки
+                "SORT_ORDER1" => "ASC",          // Направление первой сортировки
+                "SORT_ORDER2" => "DESC",         // Направление второй сортировки
+                "STRICT_SECTION_CHECK" => "N"    // Проверять принадлежность разделу строго
+            )
+        );
+        ?>
 
         <div class="activities-description-wrap">
             <div class="activities-description">
@@ -355,7 +352,6 @@ $APPLICATION->ShowPanel(); ?>
     endif; ?>
 
     <!-- Если страница не найдена, то будет отрабатывать блок вёрстки для 404 страницы + подключается файл 404.php. Эта константа устанавливается до инициализации ядра битрикса, что позволяет нам в шапке шаблона проверить её наличие и соответствующим образом изменить шаблон -->
-
     <?php
     if ("ERROR_404" == 'Y'): ?>
     <div class="page-not-found">
@@ -366,6 +362,7 @@ $APPLICATION->ShowPanel(); ?>
                 <!-- Хлебные крошки отображаются на всех страницах, кроме главной -->
                 <?php
                 if (!$bIsMainPage): ?>
+
                     <!-- Подключение компонента навигационной цепочки -->
                     <?php
                     $APPLICATION->IncludeComponent(
