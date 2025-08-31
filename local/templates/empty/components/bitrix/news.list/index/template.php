@@ -3,6 +3,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -13,7 +14,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFile */
 /** @var string $templateFolder */
 /** @var string $componentPath */
+
 /** @var CBitrixComponent $component */
+
+use Bitrix\Main\Localization\Loc;
+
 $this->setFrameMode(true);
 ?>
 
@@ -23,7 +28,7 @@ if ($arResult["ITEMS"]): ?>
     <div class="slider-responsive">
         <div class="slider-responsive-panel">
             <input data-toggle="radio-switch" type="checkbox">
-            <span>Наши лучшие предложения Вам</span>
+            <span><?= Loc::getMessage("SLIDER_BEST_OFFERS") ?></span>
         </div>
         <div class="toggle-height">
             <div class="slider-responsive-controls">
@@ -55,7 +60,9 @@ if ($arResult["ITEMS"]): ?>
                                 <!-- Проверка на то, что у элемента заполнено значение свойство URL (если заполнено, выводим его) -->
                                 <?php
                                 if ($arItem['PROPERTIES']['url']['VALUE']): ?>
-                                    <a href="<?= $arItem['PROPERTIES']['url']['VALUE'] ?>" class="link">Подробнее...</a>
+                                    <a href="<?= $arItem['PROPERTIES']['url']['VALUE'] ?>" class="link">
+                                        <?= Loc::getMessage("SLIDER_MORE") ?>
+                                    </a>
                                 <?php
                                 endif; ?>
                             </div>
