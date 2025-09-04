@@ -1,3 +1,3 @@
-<?
-$sSectionName="Гарантия";
-?>
+<?php
+
+$sSectionName = "Гарантия";

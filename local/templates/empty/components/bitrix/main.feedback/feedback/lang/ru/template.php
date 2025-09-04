@@ -1,4 +1,5 @@
 <?php
+
 $MESS["MFT_HEADER"] = "Задать вопрос:";
 $MESS["MFT_NAME"] = "Ваше имя:";
 $MESS["MFT_NAME_PLACEHOLDER"] = "Иван Иванов";

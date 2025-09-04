@@ -66,4 +66,5 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
 ?>
 
 </body>
+
 </html>

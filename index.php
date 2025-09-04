@@ -1,4 +1,4 @@
-<?
+<?php
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetTitle('Главная');
@@ -51,6 +51,6 @@ $APPLICATION->SetTitle('Главная');
     внимание:</p>
 <p><b>Электронная почта</b>: <a href="mailto:">sale@test.ru</a></p>
 
-<?
+<?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
 ?>

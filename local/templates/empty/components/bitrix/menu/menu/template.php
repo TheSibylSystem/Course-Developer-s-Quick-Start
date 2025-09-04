@@ -34,7 +34,7 @@ if (!empty($arResult)): ?>
                                 continue;
                             } ?>
                             <li <?php
-                            if ($arItem["SELECTED"]): ?> class="active"<?php
+                            if ($arItem["SELECTED"]): ?> class="active" <?php
                             endif; ?>>
                                 <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
                             </li>

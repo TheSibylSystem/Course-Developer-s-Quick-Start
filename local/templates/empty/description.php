@@ -1,9 +1,10 @@
-<?
-if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
-	die();
+<?php
 
-$arTemplate = Array(
-	'NAME' => 'Шаблон сайта Одежда',
-	'DESCRIPTION' => ''
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
+
+$arTemplate = array(
+    'NAME' => 'Шаблон сайта Одежда',
+    'DESCRIPTION' => ''
 );
-?>

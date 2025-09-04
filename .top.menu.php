@@ -1,46 +1,46 @@
-<?
-$aMenuLinks = Array(
-	Array(
-		"Каталог товаров", 
-		"/catalog/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Новости компании", 
-		"/company-news/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Гарантия", 
-		"/garanty/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Доставка", 
-		"/delivery/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Дилерам", 
-		"/dealers/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Контакты", 
-		"/contacts/", 
-		Array(), 
-		Array(), 
-		"" 
-	)
+<?php
+
+$aMenuLinks = array(
+    array(
+        "Каталог товаров",
+        "/catalog/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Новости компании",
+        "/company-news/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Гарантия",
+        "/garanty/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Доставка",
+        "/delivery/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Дилерам",
+        "/dealers/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Контакты",
+        "/contacts/",
+        array(),
+        array(),
+        ""
+    )
 );
-?>

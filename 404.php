@@ -20,7 +20,8 @@ $APPLICATION->SetTitle("404 Not Found");
         <div class="page-not-found-text">
             <h1><span>Упс!</span> Ошибочка</h1>
             <p>Дело в том, что страница, которую вы ищете, не существует либо устарела.</p>
-            <p class="small">Вы можете вернуться <a href="javascript:history.back()">назад</a>, воспользоваться картой
+            <p class="small">Вы можете вернуться <a href="javascript:history.back()">назад</a>, воспользоваться
+                картой
                 сайта внизу страницы, либо перейти на <a href="/">главную</a>.</p>
         </div>
     </div>
