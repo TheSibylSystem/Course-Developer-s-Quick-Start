@@ -4,11 +4,12 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог товаров");
 ?>
 
-<!-- Вызов комплексного компонента "Каталог" -->
-<?$APPLICATION->IncludeComponent(
+    <!-- Вызов комплексного компонента "Каталог" -->
+<?php
+$APPLICATION->IncludeComponent(
     "bitrix:catalog",
     "catalog",
-    Array(
+    array(
         "ACTION_VARIABLE" => "action", // Имя переменной для действий (добавить в корзину, сравнить и т.п.)
         "ADD_ELEMENT_CHAIN" => "Y", // Добавлять название элемента в цепочку навигации
         "ADD_PICT_PROP" => "-", // Свойство товара с дополнительными картинками
@@ -38,7 +39,7 @@ $APPLICATION->SetTitle("Каталог товаров");
         "DETAIL_DISPLAY_PREVIEW_TEXT_MODE" => "E", // Показ анонса: E — только если есть детальное описание
         "DETAIL_META_DESCRIPTION" => "-", // Источник для meta-description
         "DETAIL_META_KEYWORDS" => "-", // Источник для meta-keywords
-        "DETAIL_PROPERTY_CODE" => array("","img",""), // Свойства, выводимые на детальной странице
+        "DETAIL_PROPERTY_CODE" => array("", "img", ""), // Свойства, выводимые на детальной странице
         "DETAIL_SET_CANONICAL_URL" => "N", // Устанавливать канонический URL
         "DETAIL_STRICT_SECTION_CHECK" => "N", // Показывать элемент только в своём разделе
         "DETAIL_USE_COMMENTS" => "N", // Включить комментарии
@@ -64,7 +65,7 @@ $APPLICATION->SetTitle("Каталог товаров");
         "LIST_BROWSER_TITLE" => "-", // Источник для <title> в списке
         "LIST_META_DESCRIPTION" => "-", // Источник для meta-description в списке
         "LIST_META_KEYWORDS" => "-", // Источник для meta-keywords в списке
-        "LIST_PROPERTY_CODE" => array("",""), // Свойства, выводимые в списке раздела
+        "LIST_PROPERTY_CODE" => array("", ""), // Свойства, выводимые в списке раздела
         "MESSAGE_404" => "", // Сообщение для страницы 404
         "MESS_BTN_ADD_TO_BASKET" => "В корзину", // Текст кнопки «В корзину»
         "MESS_BTN_BUY" => "Купить", // Текст кнопки «Купить»
@@ -133,7 +134,7 @@ $APPLICATION->SetTitle("Каталог товаров");
         "USE_PRODUCT_QUANTITY" => "N", // Использовать выбор количества товара
         "USE_STORE" => "N" // Использовать складской учёт
     )
-);?>
+); ?>
 
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

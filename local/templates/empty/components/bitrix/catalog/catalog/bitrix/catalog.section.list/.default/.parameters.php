@@ -36,7 +36,6 @@ $arTemplateParameters = array(
 
 // Проверяем, существует ли массив текущих значений и какое значение имеет параметр 'VIEW_MODE'. $arCurrentValues - это массив, который Битрикс автоматически передает в этот файл, он содержит текущие значения всех параметров
 if (isset($arCurrentValues['VIEW_MODE']) && 'TILE' == $arCurrentValues['VIEW_MODE']) {
-
     // Если режим просмотра выбран как "TILE" (Плитка), то мы добавляем ЕЩЕ ОДИН параметр в настройки
     $arTemplateParameters['HIDE_SECTION_NAME'] = array(
         'PARENT' => 'VISUAL',

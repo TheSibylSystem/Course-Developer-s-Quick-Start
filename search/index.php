@@ -2,40 +2,46 @@
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
-?><?php
+?>
+
+<!-- Вызов компонента "Стандартная страница поиска" -->
+<?php
 $APPLICATION->IncludeComponent(
-	"bitrix:search.page", 
-	"search.page", 
-	array(
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_TIME" => "3600",
-		"CACHE_TYPE" => "A",
-		"CHECK_DATES" => "N",
-		"COMPONENT_TEMPLATE" => "search.page",
-		"DEFAULT_SORT" => "rank",
-		"DISPLAY_BOTTOM_PAGER" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"FILTER_NAME" => "",
-		"NO_WORD_LOGIC" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => "",
-		"PAGER_TITLE" => "Результаты поиска",
-		"PAGE_RESULT_COUNT" => "10",
-		"RESTART" => "Y",
-		"SHOW_WHEN" => "N",
-		"SHOW_WHERE" => "N",
-		"USE_LANGUAGE_GUESS" => "Y",
-		"USE_SUGGEST" => "N",
-		"USE_TITLE_RANK" => "Y",
-		"arrFILTER" => array(
-			0 => "no",
-		),
-		"arrWHERE" => ""
-	),
-	false
-); ?><?php
+    "bitrix:search.page",
+    "search.page",
+    array(
+        "AJAX_MODE" => "N", // Включить AJAX-загрузку: N — нет, Y — да
+        "AJAX_OPTION_ADDITIONAL" => "", // Дополнительный идентификатор для AJAX (для уникальности)
+        "AJAX_OPTION_HISTORY" => "N", // Добавлять шаги AJAX в историю браузера
+        "AJAX_OPTION_JUMP" => "N", // Прокручивать страницу к началу компонента после AJAX
+        "AJAX_OPTION_STYLE" => "Y", // Подгружать стили компонента при AJAX-запросе
+        "CACHE_TIME" => "3600", // Время кеширования (секунды)
+        "CACHE_TYPE" => "A", // Тип кеша: A — автоматический, N — без кеша, Y — всегда
+        "CHECK_DATES" => "N", // Искать только по активным элементам (с учётом дат активности)
+        "COMPONENT_TEMPLATE" => "search.page",
+        "DEFAULT_SORT" => "rank", // Сортировка результатов: rank — по релевантности, date — по дате
+        "DISPLAY_BOTTOM_PAGER" => "Y", // Показывать постраничную навигацию снизу
+        "DISPLAY_TOP_PAGER" => "N", // Показывать постраничную навигацию сверху
+        "FILTER_NAME" => "", // Имя глобального массива для дополнительного фильтра
+        "NO_WORD_LOGIC" => "N", // Игнорировать логику «и/или/не» в поисковой фразе
+        "PAGER_SHOW_ALWAYS" => "N", // Показывать постраничку даже при одном результате
+        "PAGER_TEMPLATE" => "", // Шаблон постраничной навигации (пусто — по умолчанию)
+        "PAGER_TITLE" => "Результаты поиска", // Заголовок блока постраничной навигации
+        "PAGE_RESULT_COUNT" => "10", // Количество результатов на странице
+        "RESTART" => "Y", // Повторять поиск без морфологии, если нет точных совпадений
+        "SHOW_WHEN" => "N", // Отображать поле выбора даты
+        "SHOW_WHERE" => "N", // Отображать выбор области поиска (модуля/сайта)
+        "USE_LANGUAGE_GUESS" => "Y", // Автоопределение раскладки клавиатуры (ru/en)
+        "USE_SUGGEST" => "N", // Показывать подсказки поисковых фраз
+        "USE_TITLE_RANK" => "Y", // Повышать вес заголовков в релевантности
+        "arrFILTER" => array(
+            0 => "no", // Массив модулей/инфоблоков для поиска; "no" — искать везде
+        ),
+        "arrWHERE" => "" // Конкретные области поиска (если SHOW_WHERE = Y)
+    ),
+    false
+);
+?>
+
+<?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
